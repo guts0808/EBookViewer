@@ -28,7 +28,7 @@ class ViewController: UITableViewController {
         var ctlr: PDFViewController = PDFViewController()
         ctlr.pdfurl = NSBundle.mainBundle().URLForResource("sample.pdf", withExtension: nil)
 
-        self.presentViewController(ctlr, animated: true, completion: nil)
+        self.navigationController?.pushViewController(ctlr, animated: true)
     }
 
 }
