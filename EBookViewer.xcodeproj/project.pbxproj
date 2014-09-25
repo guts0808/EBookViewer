@@ -13,6 +13,9 @@
 		D825681A19D3FDA900B3B68A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D825681919D3FDA900B3B68A /* Images.xcassets */; };
 		D825681D19D3FDA900B3B68A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D825681B19D3FDA900B3B68A /* LaunchScreen.xib */; };
 		D825682919D3FDAA00B3B68A /* EBookViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D825682819D3FDAA00B3B68A /* EBookViewerTests.swift */; };
+		D825683619D3FE4500B3B68A /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D825683419D3FE4500B3B68A /* PDFView.swift */; };
+		D825683719D3FE4500B3B68A /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D825683519D3FE4500B3B68A /* PDFViewController.swift */; };
+		D825683919D3FE5C00B3B68A /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D825683819D3FE5C00B3B68A /* sample.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		D825682219D3FDA900B3B68A /* EBookViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EBookViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D825682719D3FDAA00B3B68A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D825682819D3FDAA00B3B68A /* EBookViewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBookViewerTests.swift; sourceTree = "<group>"; };
+		D825683419D3FE4500B3B68A /* PDFView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PDFView.swift; path = PDFViewer/PDFView.swift; sourceTree = "<group>"; };
+		D825683519D3FE4500B3B68A /* PDFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PDFViewController.swift; path = PDFViewer/PDFViewController.swift; sourceTree = "<group>"; };
+		D825683819D3FE5C00B3B68A /* sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = sample.pdf; path = Resource/sample.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,8 @@
 		D825680419D3FDA900B3B68A = {
 			isa = PBXGroup;
 			children = (
+				D825683319D3FE3700B3B68A /* Resource */,
+				D825683219D3FE3000B3B68A /* PDFViewer */,
 				D825680F19D3FDA900B3B68A /* EBookViewer */,
 				D825682519D3FDAA00B3B68A /* EBookViewerTests */,
 				D825680E19D3FDA900B3B68A /* Products */,
@@ -110,6 +118,23 @@
 				D825682719D3FDAA00B3B68A /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D825683219D3FE3000B3B68A /* PDFViewer */ = {
+			isa = PBXGroup;
+			children = (
+				D825683419D3FE4500B3B68A /* PDFView.swift */,
+				D825683519D3FE4500B3B68A /* PDFViewController.swift */,
+			);
+			name = PDFViewer;
+			sourceTree = "<group>";
+		};
+		D825683319D3FE3700B3B68A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D825683819D3FE5C00B3B68A /* sample.pdf */,
+			);
+			name = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D825683919D3FE5C00B3B68A /* sample.pdf in Resources */,
 				D825681819D3FDA900B3B68A /* Main.storyboard in Resources */,
 				D825681D19D3FDA900B3B68A /* LaunchScreen.xib in Resources */,
 				D825681A19D3FDA900B3B68A /* Images.xcassets in Resources */,
@@ -212,8 +238,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D825683619D3FE4500B3B68A /* PDFView.swift in Sources */,
 				D825681519D3FDA900B3B68A /* ViewController.swift in Sources */,
 				D825681319D3FDA900B3B68A /* AppDelegate.swift in Sources */,
+				D825683719D3FE4500B3B68A /* PDFViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
