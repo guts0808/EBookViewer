@@ -10,11 +10,41 @@ import UIKit
 
 class PDFViewController: UIViewController {
     var pdfurl: NSURL?
+    var pdfdoc:CGPDFDocumentRef?
+    var pdfvw: PDFView?
+    var currentPage: UInt = 1
+    var lastPage: UInt?
     override func viewDidLoad() {
-        var pdfdoc:CGPDFDocumentRef? = CGPDFDocumentCreateWithURL(pdfurl)
-        var pdfvw: PDFView = PDFView(frame: UIScreen.mainScreen().bounds)
-        pdfvw.backgroundColor = UIColor.whiteColor()
-        pdfvw.pdfpage = CGPDFDocumentGetPage(pdfdoc, 1)
-        self.view.addSubview(pdfvw)
+        pdfdoc = CGPDFDocumentCreateWithURL(pdfurl)
+        pdfvw = PDFView(frame: UIScreen.mainScreen().bounds)
+        pdfvw!.backgroundColor = UIColor.whiteColor()
+        pdfvw!.pdfpage = CGPDFDocumentGetPage(pdfdoc, currentPage)
+        self.view.addSubview(pdfvw!)
+        
+        lastPage = CGPDFDocumentGetNumberOfPages(pdfdoc)
+        
+        var nextView = createTouchView()
+        nextView.frame.origin.x = CGRectGetWidth(pdfvw!.frame) - CGRectGetWidth(nextView.frame)
+        var nextTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "goNextPage:")
+        nextView.gestureRecognizers = [nextTap]
+        self.view.userInteractionEnabled = true
+        self.view.addSubview(nextView)
+    }
+    
+    func goNextPage(sender: AnyObject!) {
+        if currentPage == lastPage{
+            return
+        }
+            
+        currentPage += 1
+        pdfvw!.pdfpage = CGPDFDocumentGetPage(pdfdoc, currentPage)
+    }
+    
+    func createTouchView() ->UIView {
+        var width: CGFloat = CGRectGetWidth(pdfvw!.frame) / 4
+        var view: UIView = UIView(frame: CGRectMake(0, 0, width, CGRectGetHeight(pdfvw!.frame)))
+        view.backgroundColor = UIColor.clearColor()
+        view.userInteractionEnabled = true
+        return view
     }
 }
