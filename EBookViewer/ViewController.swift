@@ -33,10 +33,12 @@ class ViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        var files: NSArray = NSFileManager.defaultManager().contentsOfDirectoryAtPath(String(paths[0] as NSString), error: nil)!
+        var documentsPath: String = String(paths[0] as NSString)
+        var files: NSArray = NSFileManager.defaultManager().contentsOfDirectoryAtPath(
+            documentsPath, error: nil)!
         
         for file in files {
-            fileList.addObject(file.lastPathComponent)
+            fileList.addObject(documentsPath.stringByAppendingPathComponent(file as NSString))
         }
         
         return files.count
@@ -45,8 +47,15 @@ class ViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cellID", forIndexPath: indexPath) as UITableViewCell
         var filename: NSString? = fileList[indexPath.row] as? NSString
-        cell.textLabel!.text = filename!
+        cell.textLabel!.text = filename!.lastPathComponent
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var filename: String? = fileList[indexPath.row] as? String
+        var ctlr: PDFViewController = PDFViewController()
+        ctlr.pdfurl = NSURL(fileURLWithPath: filename!)
+        self.navigationController?.pushViewController(ctlr, animated: true)
     }
 }
 
