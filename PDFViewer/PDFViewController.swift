@@ -23,6 +23,12 @@ class PDFViewController: UIViewController {
         
         lastPage = CGPDFDocumentGetNumberOfPages(pdfdoc)
         
+        var preView = createTouchView()
+        var preTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "goPrevPage:")
+        preView.gestureRecognizers = [preTap]
+        self.view.userInteractionEnabled = true
+        self.view.addSubview(preView)
+        
         var nextView = createTouchView()
         nextView.frame.origin.x = CGRectGetWidth(pdfvw!.frame) - CGRectGetWidth(nextView.frame)
         var nextTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "goNextPage:")
@@ -31,8 +37,18 @@ class PDFViewController: UIViewController {
         self.view.addSubview(nextView)
     }
     
+    func goPrevPage(sender: AnyObject!) {
+        if currentPage == 1 {
+            return
+        }
+        
+        currentPage -= 1
+        pdfvw!.pdfpage = CGPDFDocumentGetPage(pdfdoc, currentPage)
+    }
+
+    
     func goNextPage(sender: AnyObject!) {
-        if currentPage == lastPage{
+        if currentPage == lastPage {
             return
         }
             
