@@ -20,6 +20,7 @@ class PDFViewController: UIViewController {
         pdfvw = PDFView(frame: UIScreen.mainScreen().bounds)
         pdfvw!.backgroundColor = UIColor.whiteColor()
         pdfvw!.pdfpage = CGPDFDocumentGetPage(pdfdoc, currentPage)
+        pdfvw!.autoresizingMask = .FlexibleWidth
         self.view.addSubview(pdfvw!)
         
         var showNaviTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "showNaviBar:")
@@ -31,6 +32,7 @@ class PDFViewController: UIViewController {
         var preView = createTouchView()
         var preTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "goPrevPage:")
         preView.gestureRecognizers = [preTap]
+        preView.autoresizingMask = .FlexibleRightMargin
         self.view.userInteractionEnabled = true
         self.view.addSubview(preView)
         
@@ -38,6 +40,7 @@ class PDFViewController: UIViewController {
         nextView.frame.origin.x = CGRectGetWidth(pdfvw!.frame) - CGRectGetWidth(nextView.frame)
         var nextTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "goNextPage:")
         nextView.gestureRecognizers = [nextTap]
+        nextView.autoresizingMask = .FlexibleLeftMargin
         self.view.userInteractionEnabled = true
         self.view.addSubview(nextView)
     }
