@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UITableViewController {
-
+    var fileList: NSMutableArray = NSMutableArray()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,5 +31,22 @@ class ViewController: UITableViewController {
         self.navigationController?.pushViewController(ctlr, animated: true)
     }
 
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        var files: NSArray = NSFileManager.defaultManager().contentsOfDirectoryAtPath(String(paths[0] as NSString), error: nil)!
+        
+        for file in files {
+            fileList.addObject(file.lastPathComponent)
+        }
+        
+        return files.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cellID", forIndexPath: indexPath) as UITableViewCell
+        var filename: NSString? = fileList[indexPath.row] as? NSString
+        cell.textLabel!.text = filename!
+        return cell
+    }
 }
 

@@ -435,6 +435,7 @@
 				D825682E19D3FDAA00B3B68A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D825682F19D3FDAA00B3B68A /* Build configuration list for PBXNativeTarget "EBookViewerTests" */ = {
 			isa = XCConfigurationList;
@@ -443,6 +444,7 @@
 				D825683119D3FDAA00B3B68A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
