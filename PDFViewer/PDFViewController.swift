@@ -14,6 +14,7 @@ class PDFViewController: UIViewController {
     var pdfvw: PDFView?
     var currentPage: UInt = 1
     var lastPage: UInt?
+    var showNavi: Bool = false
     override func viewDidLoad() {
         pdfdoc = CGPDFDocumentCreateWithURL(pdfurl)
         pdfvw = PDFView(frame: UIScreen.mainScreen().bounds)
@@ -21,6 +22,10 @@ class PDFViewController: UIViewController {
         pdfvw!.pdfpage = CGPDFDocumentGetPage(pdfdoc, currentPage)
         self.view.addSubview(pdfvw!)
         
+        var showNaviTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "showNaviBar:")
+        pdfvw!.userInteractionEnabled = true
+        pdfvw!.gestureRecognizers = [showNaviTap]
+
         lastPage = CGPDFDocumentGetNumberOfPages(pdfdoc)
         
         var preView = createTouchView()
@@ -35,6 +40,11 @@ class PDFViewController: UIViewController {
         nextView.gestureRecognizers = [nextTap]
         self.view.userInteractionEnabled = true
         self.view.addSubview(nextView)
+    }
+    
+    func showNaviBar(sender: AnyObject!) {
+        self.navigationController?.setNavigationBarHidden(showNavi, animated: true)
+        showNavi = !showNavi
     }
     
     func goPrevPage(sender: AnyObject!) {

@@ -40,7 +40,7 @@
         <!--Navigation Controller-->
         <scene sceneID="tYc-7Z-faS">
             <objects>
-                <navigationController hidesBarsOnSwipe="YES" hidesBarsOnTap="YES" id="zhh-km-1yF" sceneMemberID="viewController">
+                <navigationController id="zhh-km-1yF" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q1d-Wz-0dO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
