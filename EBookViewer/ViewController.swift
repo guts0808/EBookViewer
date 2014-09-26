@@ -23,12 +23,8 @@ class ViewController: UITableViewController {
 
     @IBAction func refreshButton(sender: AnyObject!) {
         println("refreshButton");
-        var path: NSString = NSBundle.mainBundle().pathForResource("sample", ofType: "pdf")!
-        var url: NSURL = NSURL.URLWithString(path)
-        var ctlr: PDFViewController = PDFViewController()
-        ctlr.pdfurl = NSBundle.mainBundle().URLForResource("sample.pdf", withExtension: nil)
-
-        self.navigationController?.pushViewController(ctlr, animated: true)
+        fileList = NSMutableArray()
+        self.tableView.reloadData()
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
